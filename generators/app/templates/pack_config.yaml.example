@@ -1,4 +1,4 @@
 ---
-  url: "https://company.atlassian.net"
-  project: "MY_PROJECT"
-  verify: True
+url: "http://example.com"
+username: "xxx"
+password: "xxx"

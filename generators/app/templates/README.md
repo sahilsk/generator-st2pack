@@ -15,9 +15,9 @@ Or if in remote repository: `st2 pack install https://github.com/MY/PACK`
 Copy the example configuration in [<%= name %>.yaml.example](./<%= name %>.yaml.example)
 to `/opt/stackstorm/configs/<%= name %>.yaml` and edit as required.
 
-* ``url`` - URL of the JIRA instance (e.g. ``https://myproject.atlassian.net``)
-* ``poll_interval`` - Polling interval - default 30s
-* ``project`` - project name
+* ``url`` - URL of the pack (e.g. ``https://myproject.abc.net``)
+* ``username`` - username
+* ``password`` - Password
 
 
 **Note** : When modifying the configuration in `/opt/stackstorm/configs/` please

@@ -1,0 +1,16 @@
+---
+url:
+  description: "URL of the server"
+  type: "string"
+  secret: false
+  required: true
+username:
+  description: "Username if using the basic auth_method"
+  type: "string"
+  secret: false
+  required: true
+password:
+    description: "Password if using the basic auth_method"
+    type: "string"
+    secret: true
+    required: true

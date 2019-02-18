@@ -35,25 +35,29 @@ module.exports = {
             value: 'includeAliases',
             checked: true
           }
-        ]
+        ],
+        store: true
       },
       {
         type: 'input',
         name: 'pack_ref',
         message: 'package ref(without spaces and hyphens eg. hello_st2)',
-        default: "hello_st2"
+        default: "hello_st2",
+        store: true
       },
       {
         type: 'input',
         name: 'pack_name',
         message: 'package name. eg. hello stackstorm',
-        default: answers => answers.pack_ref
+        default: answers => answers.pack_ref,
+        store: true
       },
       {
         type: 'input',
         name: 'pack_desc',
         message: 'pack descrition goes here',
-        default: answers =>  "Stackstorm pack(" + answers.pack_name + ") containing examples of sensor, rule, and action. "
+        default: answers =>  "Stackstorm pack(" + answers.pack_name + ") containing examples of sensor, rule, and action. ",
+        store: true
       }
     ],
     dirsToCreate: [],
@@ -71,7 +75,7 @@ module.exports = {
         output: 'requirements.txt'
       },
       {
-        input: 'pack_config.schema.yaml',
+        input: 'config.schema.yaml',
         output: 'config.schema.yaml'
       },
       {

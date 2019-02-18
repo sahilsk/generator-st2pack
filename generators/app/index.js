@@ -108,5 +108,15 @@ module.exports = class extends Generator {
     });
 
   }
+
+  install(){
+    this.spawnCommandSync('git', ['init']);
+    this.spawnCommandSync('git', ['add','./']);
+    this.spawnCommandSync('git', ['commit','-m', 'Initial commit']);
+  }
+  end(){
+    this.log("You are ready to install pack:");
+    this.log(" > st2 pack install file:///$PWD");
+  }
   
 };
