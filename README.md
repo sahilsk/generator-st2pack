@@ -7,15 +7,14 @@
 
 ## Features
 
-Please see our [gulpfile](app/templates/gulpfile.js) for up to date information on what we support.
-
-* create scaffold for stackform [hello_st2](https://docs.stackstorm.com/reference/packs.html#creating-your-first-pack)
-
+* create scaffold for stackform pack: [hello_st2](https://docs.stackstorm.com/reference/packs.html#creating-your-first-pack)
+* create scaffold for stackstorm action
 
 ## Getting Started
 
 - Install: `npm install --global yo generator-st2pack`
 - Run `yo st2pack` to scaffold your stackstorm pack
+- Run `yo st2pack:action` to scaffold stackstorm action
 - Run `st2 pack install file:///$PWD` to install pack
 - Commands like `st2 pack list`, `st2 action list`, `st2 rule list` and `st2 trigger list` will show you the loaded content. 
 

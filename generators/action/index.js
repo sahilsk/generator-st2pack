@@ -15,8 +15,8 @@ module.exports = class extends Generator {
 
   initializing() {
     this.pack = {
-        "name": this.config.get('pack_name', ''),
-        "ref": this.config.get('pack_ref', '')
+      "name": this.config.get('pack_name', null),
+      "ref": this.config.get('pack_ref', null)
     };
   }
 
@@ -29,8 +29,8 @@ module.exports = class extends Generator {
       );
     }
 
-    this.answers = await this.prompt([
-        {
+    let promptsList = [
+      {
         type: "input",
         name: "action_name",
         message: "What's your action name",
@@ -50,20 +50,34 @@ module.exports = class extends Generator {
         choices: () => Object.keys(config.entrypointMap),
         store: true
       }
-    ]);
+    ];
+
+    if( !this.pack.ref){
+      promptsList.push({
+        type: "input",
+        name: "pack_ref",
+        message: "What's your pack name(eg. hello_st2)",
+        store: true
+      })
+    }
+    this.answers = await this.prompt(promptsList);
+    
+    if( !this.pack.ref){
+      this.pack.ref = this.answers.pack_ref;
+    }
 
     this.answers.entrypoint = config.entrypointMap[this.answers.runner_type]
     
-
     this.log("action name", this.answers.action_name);
     this.log("action desc", this.answers.action_desc);
     this.log("runner type", this.answers.runner_type);
     this.log("entrypoint", this.answers.entrypoint);
+    this.log("pack_ref", this.answers.pack_ref);
 
   }
 
   configuring() {
-    this.log("pack ref", this.pack.name);
+    this.log("pack ref", this.pack.ref);
   }
 
   writing() {
@@ -84,17 +98,17 @@ module.exports = class extends Generator {
     actionMetafile.pack = templateData.pack;
     actionMetafile.runner_type = templateData.runner_type;
     actionMetafile.description = templateData.description;
-    
 
-    if(this.answers.entrypoint.filename != null){
-        let  entry_file = this.answers.entrypoint.filename( actionMetafile.name);
-        actionMetafile.entry_point = entry_file;
-        actionMetafile.parameters = this.answers.entrypoint.parameters;
-        this.fs.write("actions/" + entry_file, this.answers.entrypoint.text);
+
+    if (this.answers.entrypoint.filename != null) {
+      let entry_file = this.answers.entrypoint.filename(actionMetafile.name);
+      actionMetafile.entry_point = entry_file;
+      actionMetafile.parameters = this.answers.entrypoint.parameters;
+      this.fs.write("actions/" + entry_file, this.answers.entrypoint.text);
     }
 
-    this.fs.write("actions/" + actionMetafile.name + ".yaml", YAML.stringify(actionMetafile) );
+    this.fs.write("actions/" + actionMetafile.name + ".yaml", YAML.stringify(actionMetafile));
   }
 
-  
+
 };
