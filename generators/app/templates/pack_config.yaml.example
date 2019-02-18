@@ -1,0 +1,4 @@
+---
+  url: "https://company.atlassian.net"
+  project: "MY_PROJECT"
+  verify: True

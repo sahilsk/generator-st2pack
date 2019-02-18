@@ -1,0 +1,11 @@
+---
+name: on_hello_event1
+pack: <%= ref %>
+description: Sample rule firing on <%= ref %>.event1.
+enabled: true
+trigger:
+    type: <%= ref %>.event1
+action:
+    ref: <%= ref %>.greet
+    parameters:
+        greeting: Yo

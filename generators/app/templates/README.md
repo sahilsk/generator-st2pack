@@ -1,0 +1,4 @@
+Stackstorm-<%= name %>
+---
+
+**Description**: <%= description %>

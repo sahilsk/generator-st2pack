@@ -1,0 +1,21 @@
+Description:
+    Creates a hello_st2 stackstorm pack.
+
+Options:
+    Sass: Include Sass
+    Bootstrap: Include Bootstrap or Bootstrap Sass if Sass is included
+    Modernizr: Include Modernizr
+    Babel: Use ES2015 features by using Babel
+
+Example:
+    yo st2pack
+
+    This will create:
+        actions: hello action.
+        aliases: hello action alias
+        policies: hello action policies
+        rules: hello action rules
+        sensors: hello action sensors
+
+        app/: Your application files.
+        test/: Unit tests for your application.
