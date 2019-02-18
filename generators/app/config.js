@@ -83,49 +83,59 @@ module.exports = {
     //Actions
       {
         input: 'actions/greet.yaml',
-        output: 'actions/greet.yaml'
+        output: 'actions/greet.yaml',
+        role: "action"
       },
       {
         input: 'actions/greet.sh',
-        output: 'actions/greet.sh'
+        output: 'actions/greet.sh',
+        role: "action"
       },
     //Aliases
       {
         input: 'aliases/alias1.yaml',
-        output: 'aliases/alias1.yaml'
+        output: 'aliases/alias1.yaml',
+        role: "alias"
       },
     //Policies      
       {
         input: 'policies/retry_core_http_on_timeout.yaml',
-        output: 'policies/retry_core_http_on_timeout.yaml'
+        output: 'policies/retry_core_http_on_timeout.yaml',
+        role: "policy"
       },
       {
         input: 'policies/policy1.yaml',
-        output: 'policies/policy1.yaml'
+        output: 'policies/policy1.yaml',
+        role: "policy"
       },
     //Rules
       {
         input: 'rules/rule1.yaml',
-        output: 'rules/rule1.yaml'
+        output: 'rules/rule1.yaml',
+        role: "rule"
       },    
     //Sensors
       {
         input: 'sensors/sensor1.py',
-        output: 'sensors/sensor1.py'
+        output: 'sensors/sensor1.py',
+        role: "sensor"
       },    
       {
         input: 'sensors/sensor1.yaml',
-        output: 'sensors/sensor1.yaml'
+        output: 'sensors/sensor1.yaml',
+        role: "action"
       },    
     //Pack.yaml
       {
         input: 'pack.yaml',
-        output: 'pack.yaml'
+        output: 'pack.yaml',
+        role: "meta"
       },
     //README.md
       {
         input: 'README.md',
-        output: 'README.md'
+        output: 'README.md',
+        role: "doc"
       }
     ]
   };

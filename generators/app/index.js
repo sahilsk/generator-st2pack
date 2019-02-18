@@ -38,7 +38,7 @@ module.exports = class extends Generator {
       this.includeSensors = hasFeature('includeSensors');
       this.includeRules = hasFeature('includeRules');
       this.includePolicies = hasFeature('includePolicies');
-      this.includeAliases = answers.includeAliases;
+      this.includeAliases = hasFeature('includeAliases');
       this.pack.ref = answers.pack_ref;
       this.pack.name = answers.pack_name;
       this.pack.description = answers.pack_desc;
@@ -78,7 +78,19 @@ module.exports = class extends Generator {
 
     // Render Files
     config.filesToRender.forEach(file => {
-      copyTpl(file.input, file.output, templateData);
+      if(
+        (file.role === "sensor" && this.includeSensors)
+        ||
+        (file.role === "rule" && this.includeRules)
+        ||
+        (file.role === "policy" && this.includePolicies)
+        ||
+        (file.role === "alias" && this.includeAliases)
+        ||
+        (file.role === "action" || file.role === "doc" || file.role === "meta")
+      ){
+        copyTpl(file.input, file.output, templateData);
+      }
     });
 
     // Copy Files

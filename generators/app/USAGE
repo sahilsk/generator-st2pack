@@ -2,10 +2,10 @@ Description:
     Creates a hello_st2 stackstorm pack.
 
 Options:
-    Sass: Include Sass
-    Bootstrap: Include Bootstrap or Bootstrap Sass if Sass is included
-    Modernizr: Include Modernizr
-    Babel: Use ES2015 features by using Babel
+    Sensors: Include Sensors
+    Rules: Create Rules
+    Policies: Create Policies
+    Aliases: Create Aliases
 
 Example:
     yo st2pack
