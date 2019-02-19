@@ -88,7 +88,14 @@ module.exports = class extends ST2PackBaseGenerator {
       pack: this.pack.ref,
       description: this.answers.action_desc,
       runner_type: this.answers.runner_type,
-      enabled: true
+      enabled: true,
+      parameters: {
+        action:{
+            default: this.answers.action_name,
+            immutable: true,
+            type: "string"
+        }
+      }
     };
 
     let runnerObj = config.runnerList[this.answers.runner_type];
@@ -97,8 +104,10 @@ module.exports = class extends ST2PackBaseGenerator {
       if (typeof (actionMetadata.entry_point) === "function") {
         actionMetadata.entry_point = actionMetadata.entry_point()
       }
-      if (runnerObj.parameters && Object.keys(runnerObj.parameters).length > 0) {
-        actionMetadata.parameters = runnerObj.parameters;
+      if (runnerObj.parameters) {
+        Object.keys(runnerObj.parameters).forEach(pkey => {
+          actionMetadata.parameters[pkey] = runnerObj.parameters[pkey];
+        });
       }
       //Create launch script
       this.fs.write("actions/" + actionMetadata.entry_point, runnerObj.text);
