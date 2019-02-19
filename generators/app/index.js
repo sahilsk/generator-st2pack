@@ -118,7 +118,7 @@ module.exports = class extends ST2PackBaseGenerator {
     config.filesToRender.forEach((fle) => {
       switch (fle.role) {
         case "action":
-          if (fle.output.includes(".yaml")) {
+          if (fle.output.includes(".yaml") && this.includeActions) {
             let readFleObj = YAML.parse(this.fs.read(fle.output));
             let actions = this.config.get('actions');
             actions[readFleObj['name']] = readFleObj;
@@ -126,7 +126,7 @@ module.exports = class extends ST2PackBaseGenerator {
           }
           break;
         case "alias":
-          if (fle.output.includes(".yaml")) {
+          if (fle.output.includes(".yaml") && this.includeAliases) {
             let readFleObj = YAML.parse(this.fs.read(fle.output));
             let aliases = this.config.get('aliases');
             aliases[readFleObj['name']] = readFleObj;
@@ -134,7 +134,7 @@ module.exports = class extends ST2PackBaseGenerator {
           }
           break;
         case "rule":
-          if (fle.output.includes(".yaml")) {
+          if (fle.output.includes(".yaml") && this.includeRules) {
             let readFleObj = YAML.parse(this.fs.read(fle.output));
             let rules = this.config.get('rules');
             rules[readFleObj['name']] = readFleObj;
@@ -142,7 +142,7 @@ module.exports = class extends ST2PackBaseGenerator {
           }
           break;
         case "sensor":
-          if (fle.output.includes(".yaml")) {
+          if (fle.output.includes(".yaml") && this.includeSensors) {
             let readFleObj = YAML.parse(this.fs.read(fle.output));
             let sensors = this.config.get('sensors');
             sensors[readFleObj['class_name']] = readFleObj;
@@ -150,7 +150,7 @@ module.exports = class extends ST2PackBaseGenerator {
           }
           break;
         case "policy":
-          if (fle.output.includes(".yaml")) {
+          if (fle.output.includes(".yaml") && this.includePolicies) {
             let readFleObj = YAML.parse(this.fs.read(fle.output));
             let policies = this.config.get('policies');
             policies[readFleObj['name']] = readFleObj;
@@ -162,7 +162,7 @@ module.exports = class extends ST2PackBaseGenerator {
       }
     })
     this.config.save();
-    
+
     if (!this.options['skip-readme']) {
       this.generateDoc(this.config.getAll());
     }
