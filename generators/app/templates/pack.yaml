@@ -1,7 +1,7 @@
 ---
-ref: <%= name %>
-name: <%= ref %>
-description: <%= description %>
+ref: <%= pack.name %>
+name: <%= pack.ref %>
+description: <%= pack.description %>
 keywords:
     - example
     - test

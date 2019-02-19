@@ -1,25 +1,22 @@
 module.exports = {
 
-    entrypointMap : {
+    //Available runners list: https://docs.stackstorm.com/actions.html#available-runners
+    runnerList: {
         'local-shell-cmd': {
             "text": '',
             'filename': null,
-            "parameters": [
-                {
-
-                }
-            ]
+            "parameters": {}
         },
         'local-shell-script': {
             "text": '\
 #!/bin/bash\n\
 echo "$1, StackStorm!"\n\
 ',
-            'filename': name => name + '.sh',
+            'filename': action_name => action_name + '.sh',
             "parameters": {
                 "greeting": {
                     "type": "string",
-                    "description":" Greeting you want to say to StackStorm (i.e. Hello, Hi, Yo, etc.)",
+                    "description": " Greeting you want to say to StackStorm (i.e. Hello, Hi, Yo, etc.)",
                     "required": true,
                     "position": 1
                 }
@@ -28,22 +25,18 @@ echo "$1, StackStorm!"\n\
         'remote-shell-cmd': {
             "text": '',
             'filename': null,
-            "parameters": [
-                {
-
-                }
-            ]
+            "parameters": {}
         },
         'remote-shell-script': {
             "text": '\
 #!/bin/bash\n\
 echo "$1, StackStorm!"\n\
 ',
-            'filename': name => name + '.sh',
+            'filename': action_name => action_name + '.sh',
             "parameters": {
                 "greeting": {
                     "type": "string",
-                    "description":" Greeting you want to say to StackStorm (i.e. Hello, Hi, Yo, etc.)",
+                    "description": " Greeting you want to say to StackStorm (i.e. Hello, Hi, Yo, etc.)",
                     "required": true,
                     "position": 1
                 }
@@ -52,56 +45,32 @@ echo "$1, StackStorm!"\n\
         'windows-cmd': {
             "text": '',
             'filename': null,
-            "parameters": [
-                {
-
-                }
-            ]
+            "parameters": {}
         },
         'windows-script': {
             "text": '',
-            'filename': name => name + '.ps1',
-            "parameters": [
-                {
-
-                }
-            ]
+            'filename': action_name => action_name + '.ps1',
+            "parameters": {}
         },
         'winrm-cmd': {
             "text": '',
             'filename': null,
-            "parameters": [
-                {
-
-                }
-            ]
+            "parameters": {}
         },
         'winrm-ps-cmd': {
             "text": '',
             'filename': null,
-            "parameters": [
-                {
-
-                }
-            ]
+            "parameters": {}
         },
         'winrm-ps-script': {
             "text": '',
-            'filename': name => name + '.ps1',
-            "parameters": [
-                {
-
-                }
-            ]
+            'filename': action_name => action_name + '.ps1',
+            "parameters": {}
         },
         'http-request': {
             "text": '',
             'filename': null,
-            "parameters": [
-                {
-
-                }
-            ]
+            "parameters": {}
         },
         'python-script': {
             "text": "\
@@ -117,7 +86,7 @@ class MyEchoAction(Action):\n\
             return (True, message)\n\
         return (False, message)\n\
             ",
-            'filename': name => name + '.py',
+            'filename': action_name => action_name + '.py',
             "parameters": {
                 "message": {
                     "type": "string",
@@ -126,25 +95,17 @@ class MyEchoAction(Action):\n\
                     "position": 0
                 }
             }
-            
+
         },
         'action-chain': {
             "text": '',
             'filename': null,
-            "parameters": [
-                {
-
-                }
-            ]
+            "parameters": {}
         },
         'mistral-v2': {
             "text": '',
             'filename': null,
-            "parameters": [
-                {
-
-                }
-            ]
+            "parameters": {}
         },
         'cloudslang': {
             "text": '',

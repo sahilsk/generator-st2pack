@@ -1,7 +1,7 @@
 ---
 name: greet
-pack: <%= ref %>
+pack: <%= pack.ref %>
 description: "Greet StackStorm"
-action_ref: "<%= ref %>.greet"
+action_ref: "<%= pack.ref %>.greet"
 formats:
   - "greet {{greeting}}"

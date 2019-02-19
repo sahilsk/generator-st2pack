@@ -1,6 +1,6 @@
 ---
 name: greet
-pack: <%= ref %>
+pack: <%= pack.ref %>
 runner_type: "local-shell-script"
 description: Greet StackStorm!
 enabled: true

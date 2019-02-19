@@ -2,11 +2,13 @@ module.exports = {
     options: {
       'skip-welcome-message': {
         desc: 'Skips the welcome message',
-        type: Boolean
+        type: Boolean,
+        default: false
       },
-      'skip-install-message': {
-        desc: 'Skips the message after the installation of dependencies',
-        type: Boolean
+      'skip-readme': {
+        desc: 'Skips the generation of README.md file',
+        type: Boolean,
+        default: false
       }
     },
     prompts: [
@@ -17,22 +19,22 @@ module.exports = {
         choices: [
           {
             name: 'Sensors',
-            value: 'includeSensors',
+            value: 'Sensors',
             checked: true
           },
           {
             name: 'Rules',
-            value: 'includeRules',
+            value: 'Rules',
             checked: true
           },
           {
             name: 'Policies',
-            value: 'includePolicies',
+            value: 'Policies',
             checked: true
           },
           {
             name: 'Aliases',
-            value: 'includeAliases',
+            value: 'Aliases',
             checked: true
           }
         ],
@@ -43,11 +45,13 @@ module.exports = {
         name: 'pack_ref',
         message: 'package ref(without spaces and hyphens eg. hello_st2)',
         default: "hello_st2",
+        required: true,
         store: true
       },
       {
         type: 'input',
         name: 'pack_name',
+        required: true,
         message: 'package name. eg. hello stackstorm',
         default: answers => answers.pack_ref,
         store: true
@@ -127,19 +131,13 @@ module.exports = {
       {
         input: 'sensors/sensor1.yaml',
         output: 'sensors/sensor1.yaml',
-        role: "action"
+        role: "sensor"
       },    
     //Pack.yaml
       {
         input: 'pack.yaml',
         output: 'pack.yaml',
         role: "meta"
-      },
-    //README.md
-      {
-        input: 'README.md',
-        output: 'README.md',
-        role: "doc"
       }
     ]
   };
